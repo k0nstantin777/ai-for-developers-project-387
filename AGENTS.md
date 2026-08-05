@@ -1,0 +1,111 @@
+# AGENTS.md
+
+## Project
+
+**Call me in time** — упрощенный аналог Cal.com. Календарь звонков с выбором даты и времени.
+
+## Stack
+
+- **Backend:** PHP 8.5, Laravel (latest), SQLite3
+- **Frontend:** VueJS 3, Tailwind CSS, SPA
+- **Infra:** Docker, Docker Compose
+
+## Development Approach
+
+**Contract First:**
+1. TypeSpec-спецификация
+2. OpenAPI-конфигурация
+3. Код
+
+**Testing:**
+- PHPUnit для контроллеров и сервисов
+- Паттерн AAA (Arrange → Act → Assert)
+
+## Project Structure
+
+```
+/
+├── docker/                  # Docker-конфигурация
+├── src/
+│   ├── backend/             # Laravel API
+│   │   ├── app/
+│   │   │   ├── Http/
+│   │   │   │   ├── Controllers/   # Тонкие контроллеры
+│   │   │   │   └── Requests/      # Form Requests (валидация)
+│   │   │   ├── Models/            # Eloquent-модели
+│   │   │   ├── Services/          # Бизнес-логика
+│   │   │   ├── Domain/            # Доменный слой (Entities, Value Objects, Enums)
+│   │   │   └── Repositories/      # Репозитории
+│   │   ├── database/
+│   │   │   └── migrations/
+│   │   ├── routes/
+│   │   │   └── api.php            # API-роуты
+│   │   └── tests/
+│   │       ├── Feature/           # Интеграционные тесты контроллеров
+│   │       └── Unit/              # Юнит-тесты сервисов
+│   └── frontend/            # VueJS 3 SPA
+│       ├── src/
+│       │   ├── components/        # Однофайловые компоненты (.vue)
+│       │   ├── composables/       # Переиспользуемая логика
+│       │   ├── router/            # Vue Router
+│       │   ├── stores/            # Pinia stores
+│       │   └── views/             # View-компоненты для страниц
+│       └── public/
+├── specs/                   # TypeSpec и OpenAPI-спецификации
+├── AGENTS.md
+├── ARCHITECTURE.md
+└── DEVELOPMENT.md
+```
+
+## Conventions
+
+### PHP / Laravel
+- PSR-12
+- Тонкие контроллеры: только вызов сервиса и возврат ответа
+- Бизнес-логика — только в Services
+- Доменный слой: Entities, Value Objects, Enums
+- Репозитории — обёртка над Eloquent моделями
+- Валидация — Form Requests
+- Без кэширования
+
+### VueJS 3
+- Однофайловые компоненты с `<script setup>`
+- Стили — Tailwind CSS (утилитарные классы)
+- State management — Pinia
+- Роутинг — Vue Router
+- Именование компонентов — PascalCase
+- Именование composables — camelCase с префиксом `use`
+
+### API Design
+- RESTful
+- JSON-ответы
+- Имена ресурсов во множественном числе (snake_case в БД, camelCase в JSON)
+- Коды ответов по стандарту HTTP
+
+### Database
+- SQLite3
+- Миграции через Laravel Migrations
+- Без внешних ключей (ограничение SQLite в Laravel-миграциях)
+
+## Key Commands
+
+```bash
+# Запуск проекта
+docker compose up -d
+
+# Бэкенд
+docker compose exec backend php artisan migrate
+docker compose exec backend php artisan test
+docker compose exec backend composer lint
+
+# Фронтенд
+docker compose exec frontend npm run dev
+docker compose exec frontend npm run build
+docker compose exec frontend npm run lint
+```
+
+## Roles
+
+Две условные роли без регистрации и авторизации:
+- **Владелец календаря** — один предзаданный профиль (админ-часть)
+- **Гость** — бронирует слоты без аккаунта
