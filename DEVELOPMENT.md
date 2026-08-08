@@ -109,7 +109,8 @@ public function test_guest_can_create_booking(): void
 - `<script setup>` во всех компонентах
 - Именование компонентов — PascalCase
 - Именование composables — camelCase с префиксом `use`
-- Стили — Tailwind CSS, утилитарные классы
+- UI-компоненты — Vuetify (Material Design)
+- Стили компонентов — scoped `<style>`, Vuetify-классы
 
 ## Contract First
 
@@ -118,6 +119,35 @@ public function test_guest_can_create_booking(): void
 1. Создать TypeSpec-спецификацию в `specs/`
 2. Сгенерировать OpenAPI-конфигурацию
 3. Написать код на основе спецификации
+
+## Prism Mock API
+
+Для фронтенд-разработки без реального бэкенда:
+
+```bash
+# Запуск mock-сервера (порт 4010)
+docker compose up -d prism
+
+# Остановка
+docker compose stop prism
+```
+
+Prism использует OpenAPI-спеку из `specs/openapi.yaml`. Все запросы валидируются по схеме, ответы генерируются на основе примеров.
+
+### Конфигурация Vite для проксирования
+
+В режиме разработки с Prism Vite проксирует `/api` на `http://prism:4010`:
+
+```js
+// vite.config.js
+export default defineConfig({
+  server: {
+    proxy: {
+      '/api': 'http://localhost:4010'  // Prism в Docker
+    }
+  }
+})
+```
 
 ## Directory Conventions
 

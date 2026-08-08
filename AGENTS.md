@@ -7,8 +7,10 @@
 ## Stack
 
 - **Backend:** PHP 8.5, Laravel (latest), SQLite3
-- **Frontend:** VueJS 3, Tailwind CSS, SPA
+- **Frontend:** VueJS 3, Vuetify (Material Design компоненты), Vite (сборщик), SPA
+- **Mock API:** Prism (mock-сервер на основе OpenAPI-спек)
 - **Infra:** Docker, Docker Compose
+- **MCP Servers:** Vuetify MCP Server (документация компонентов Vuetify в IDE)
 
 ## Development Approach
 
@@ -70,11 +72,17 @@
 
 ### VueJS 3
 - Однофайловые компоненты с `<script setup>`
-- Стили — Tailwind CSS (утилитарные классы)
+- UI-компоненты — Vuetify (Material Design)
+- Сборка — Vite
 - State management — Pinia
 - Роутинг — Vue Router
 - Именование компонентов — PascalCase
 - Именование composables — camelCase с префиксом `use`
+
+### Prism (Mock API)
+- Mock-сервер на основе OpenAPI-спек из `specs/`
+- Запускается в Docker Compose
+- Используется для фронтенд-разработки без реального бэкенда
 
 ### API Design
 - RESTful
