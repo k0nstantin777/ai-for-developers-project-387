@@ -1,0 +1,58 @@
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - "${NGINX_PORT:-8080}:80"
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./docker/backend
+    volumes:
+      - ./src/backend:/app
+      - backend-vendor:/app/vendor
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/app/database/database.sqlite
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./docker/frontend
+    volumes:
+      - ./src/frontend:/app
+      - frontend-node-modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+
+  prism:
+    image: stoplight/prism:5
+    volumes:
+      - ./specs:/specs
+    ports:
+      - "4010:4010"
+    profiles:
+      - mock
+    networks:
+      - app-network
+    command: mock -h 0.0.0.0 /specs/openapi.yaml
+
+volumes:
+  backend-vendor:
+  frontend-node-modules:
+
+networks:
+  app-network:
+    driver: bridge
