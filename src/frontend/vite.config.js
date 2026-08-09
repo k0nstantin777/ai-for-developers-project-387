@@ -3,6 +3,14 @@ import vue from '@vitejs/plugin-vue'
 import vuetify from 'vite-plugin-vuetify'
 import { fileURLToPath, URL } from 'node:url'
 
+const apiTarget = process.env.VITE_API_TARGET === 'backend'
+  ? 'http://backend:8000'
+  : 'http://prism:4010'
+
+const apiRewrite = process.env.VITE_API_TARGET === 'backend'
+  ? undefined
+  : (path) => path.replace(/^\/api/, '')
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -18,8 +26,8 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://prism:4010',
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        target: apiTarget,
+        rewrite: apiRewrite,
       },
     },
   },
