@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Call me in time
+  version: 0.0.0
+tags: []
+paths:
+  /bookings:
+    get:
+      operationId: Bookings_list
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CallMeInTime.Models.Booking'
+    post:
+      operationId: Bookings_create
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallMeInTime.Models.Booking'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallMeInTime.Models.CreateBookingRequest'
+  /bookings/{id}:
+    get:
+      operationId: Bookings_get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallMeInTime.Models.Booking'
+  /event-types:
+    get:
+      operationId: EventTypes_list
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CallMeInTime.Models.EventType'
+    post:
+      operationId: EventTypes_create
+      parameters: []
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallMeInTime.Models.EventType'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallMeInTime.Models.CreateEventTypeRequest'
+  /event-types/{id}:
+    get:
+      operationId: EventTypes_get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallMeInTime.Models.EventType'
+  /event-types/{id}/slots:
+    get:
+      operationId: EventTypes_getSlots
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallMeInTime.Models.SlotsResponse'
+components:
+  schemas:
+    CallMeInTime.Models.Booking:
+      type: object
+      required:
+        - id
+        - eventTypeId
+        - guestName
+        - guestEmail
+        - startTime
+        - endTime
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+          format: int32
+        eventTypeId:
+          type: integer
+          format: int32
+        guestName:
+          type: string
+        guestEmail:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        eventType:
+          $ref: '#/components/schemas/CallMeInTime.Models.EventType'
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CallMeInTime.Models.CreateBookingRequest:
+      type: object
+      required:
+        - eventTypeId
+        - guestName
+        - guestEmail
+        - startTime
+      properties:
+        eventTypeId:
+          type: integer
+          format: int32
+        guestName:
+          type: string
+        guestEmail:
+          type: string
+        startTime:
+          type: string
+          format: date-time
+    CallMeInTime.Models.CreateEventTypeRequest:
+      type: object
+      required:
+        - name
+        - description
+        - duration
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        duration:
+          type: integer
+          format: int32
+    CallMeInTime.Models.EventType:
+      type: object
+      required:
+        - id
+        - name
+        - description
+        - duration
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        description:
+          type: string
+        duration:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    CallMeInTime.Models.Slot:
+      type: object
+      required:
+        - startTime
+        - endTime
+      properties:
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+    CallMeInTime.Models.SlotsResponse:
+      type: object
+      required:
+        - slots
+      properties:
+        slots:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallMeInTime.Models.Slot'
+servers:
+  - url: http://localhost:8000/api
+    description: Laravel API
+    variables: {}
