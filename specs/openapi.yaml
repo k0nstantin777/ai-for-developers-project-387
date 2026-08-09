@@ -231,6 +231,6 @@ components:
           items:
             $ref: '#/components/schemas/CallMeInTime.Models.Slot'
 servers:
-  - url: http://localhost:8000/api
-    description: Laravel API
+  - url: http://localhost:8000
+    description: API
     variables: {}
