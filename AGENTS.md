@@ -45,14 +45,18 @@
 │   │   └── tests/
 │   │       ├── Feature/           # Интеграционные тесты контроллеров
 │   │       └── Unit/              # Юнит-тесты сервисов
-│   └── frontend/            # VueJS 3 SPA
+│   └── frontend/            # VueJS 3 SPA (корень Vite-проекта)
 │       ├── src/
+│       │   ├── api/               # API-клиент (fetch-обёртка)
 │       │   ├── components/        # Однофайловые компоненты (.vue)
 │       │   ├── composables/       # Переиспользуемая логика
 │       │   ├── router/            # Vue Router
 │       │   ├── stores/            # Pinia stores
 │       │   └── views/             # View-компоненты для страниц
-│       └── public/
+│       ├── public/
+│       ├── index.html
+│       ├── package.json
+│       └── vite.config.js
 ├── specs/                   # TypeSpec и OpenAPI-спецификации
 ├── AGENTS.md
 ├── ARCHITECTURE.md

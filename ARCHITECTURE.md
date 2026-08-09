@@ -108,48 +108,65 @@ GET    /api/event-types/{id}/slots — доступные слоты на 14 д�
 - **Vue Router** — клиентская маршрутизация
 - **Prism** — mock-сервер API для разработки без бэкенда
 
-### Структура
+### Структура (src/frontend/ — корень Vite-проекта)
 
 ```
-src/
-├── components/        # Переиспользуемые UI-компоненты
-│   ├── AppHeader.vue
-│   ├── Calendar.vue
-│   └── BookingForm.vue
-├── composables/       # Переиспользуемая логика (useBooking, useSlots)
-├── router/            # Vue Router
-│   └── index.js
-├── stores/            # Pinia stores (booking, eventType)
-├── views/             # Компоненты-страницы
-│   ├── AdminView.vue          # Админ-панель (владелец календаря)
-│   ├── EventTypesView.vue     # Список типов событий (гость)
-│   ├── CalendarView.vue       # Выбор слота (гость)
-│   └── BookingsView.vue       # Список бронирований (владелец)
-├── App.vue
-└── main.js
+src/frontend/
+├── src/
+│   ├── api/
+│   │   └── client.js            # Базовый fetch-клиент
+│   ├── components/              # Переиспользуемые UI-компоненты
+│   │   ├── AppHeader.vue        # Хедер: название, дата, режим
+│   │   ├── AppFooter.vue        # Футер: название, копирайт
+│   │   ├── SuccessDialog.vue    # Диалог успеха
+│   │   └── ErrorDialog.vue      # Диалог ошибки
+│   ├── composables/             # API-логика
+│   │   ├── useEventTypes.js     # GET/POST /api/event-types
+│   │   ├── useBookings.js       # GET/POST /api/bookings
+│   │   └── useSlots.js          # GET /api/event-types/{id}/slots
+│   ├── router/
+│   │   └── index.js
+│   ├── stores/
+│   │   └── app.js               # Режим: admin / guest
+│   ├── views/
+│   │   ├── HomeView.vue           # Выбор роли
+│   │   ├── admin/
+│   │   │   ├── AdminDashboardView.vue    # Панель администратора
+│   │   │   ├── CreateEventTypeView.vue   # Создание типа события
+│   │   │   └── AdminBookingsView.vue     # Список всех бронирований
+│   │   └── guest/
+│   │       ├── GuestEventTypesView.vue   # Список типов событий
+│   │       └── GuestBookingView.vue      # Выбор слота + бронирование
+│   ├── App.vue
+│   └── main.js
+├── public/
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
 ### Маршруты
 
 | Путь | Компонент | Роль | Описание |
 |---|---|---|---|
-| `/` | EventTypesView | Гость | Список типов событий |
-| `/event-types/:id` | CalendarView | Гость | Календарь со слотами |
-| `/admin` | AdminView | Владелец | Админ-панель |
-| `/admin/event-types` | EventTypesManageView | Владелец | Управление типами событий |
-| `/admin/bookings` | BookingsView | Владелец | Список бронирований |
+| `/` | HomeView | — | Выбор роли (Admin / Guest) |
+| `/admin` | AdminDashboardView | Владелец | Панель администратора |
+| `/admin/event-types/create` | CreateEventTypeView | Владелец | Создание типа события |
+| `/admin/bookings` | AdminBookingsView | Владелец | Список бронирований |
+| `/guest/event-types` | GuestEventTypesView | Гость | Список типов событий |
+| `/guest/event-types/:id/booking` | GuestBookingView | Гость | Выбор слота + бронирование |
 
 ### State Management (Pinia)
 
-- **eventTypeStore** — список типов событий
-- **bookingStore** — бронирования, свободные слоты
+- **appStore** — режим приложения (`admin` / `guest`)
+
+API-состояние (загрузка, ошибки, данные) управляется локально в composables.
 
 ### Поток данных
 
-1. Приложение загружается → запрос `GET /api/event-types` → список типов событий
-2. Гость выбирает тип → `GET /api/event-types/{id}/slots` → список свободных слотов на 14 дней
-3. Гость выбирает слот → `POST /api/bookings` → создание бронирования
-4. Владелец → `GET /api/bookings` → список всех бронирований
+1. Главная страница → выбор роли → сохраняется в appStore
+2. Гость: `GET /api/event-types` → список типов → выбор → `GET /api/event-types/{id}/slots` → слоты на 14 дней → `POST /api/bookings`
+3. Админ: `GET /api/event-types` + `GET /api/bookings` → просмотр → `POST /api/event-types`
 
 ## Mock API (Prism)
 

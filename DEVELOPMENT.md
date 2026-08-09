@@ -122,28 +122,31 @@ public function test_guest_can_create_booking(): void
 
 ## Prism Mock API
 
-Для фронтенд-разработки без реального бэкенда:
+Для фронтенд-разработки без реального бэкенда.
 
 ```bash
+# Скопировать сгенерированный OpenAPI-спек в specs/ (нужно для Prism)
+cp tsp-output/schema/openapi.yaml specs/openapi.yaml
+
 # Запуск mock-сервера (порт 4010)
-docker compose up -d prism
+docker compose --profile mock up -d prism
 
 # Остановка
 docker compose stop prism
 ```
 
-Prism использует OpenAPI-спеку из `specs/openapi.yaml`. Все запросы валидируются по схеме, ответы генерируются на основе примеров.
+Prism читает `specs/openapi.yaml`, валидирует запросы/ответы по схеме и генерирует мок-данные.
 
 ### Конфигурация Vite для проксирования
 
-В режиме разработки с Prism Vite проксирует `/api` на `http://prism:4010`:
+Vite проксирует `/api` на Prism в Docker:
 
 ```js
 // vite.config.js
 export default defineConfig({
   server: {
     proxy: {
-      '/api': 'http://localhost:4010'  // Prism в Docker
+      '/api': 'http://localhost:4010'
     }
   }
 })
@@ -153,30 +156,34 @@ export default defineConfig({
 
 ```
 src/
-├── backend/
+├── backend/                       # Корень Laravel-проекта
 │   ├── app/
 │   │   ├── Http/
-│   │   │   ├── Controllers/   # Тонкие контроллеры
-│   │   │   └── Requests/      # Form Requests
-│   │   ├── Models/            # Eloquent-модели
-│   │   ├── Services/          # Сервисы с бизнес-логикой
-│   │   ├── Domain/            # Entities, Value Objects, Enums
-│   │   └── Repositories/      # Репозитории
+│   │   │   ├── Controllers/       # Тонкие контроллеры
+│   │   │   └── Requests/          # Form Requests
+│   │   ├── Models/                # Eloquent-модели
+│   │   ├── Services/              # Сервисы с бизнес-логикой
+│   │   ├── Domain/                # Entities, Value Objects, Enums
+│   │   └── Repositories/          # Репозитории
 │   ├── database/
 │   │   └── migrations/
 │   ├── routes/
 │   │   └── api.php
 │   └── tests/
-│       ├── Feature/           # Интеграционные тесты
-│       └── Unit/              # Юнит-тесты
-└── frontend/
+│       ├── Feature/               # Интеграционные тесты
+│       └── Unit/                  # Юнит-тесты
+└── frontend/                      # Корень Vite-проекта
     ├── src/
-    │   ├── components/        # UI-компоненты
-    │   ├── composables/       # Vue composables
-    │   ├── router/            # Vue Router
-    │   ├── stores/            # Pinia
-    │   └── views/             # Компоненты страниц
-    └── public/
+    │   ├── api/                   # API-клиент
+    │   ├── components/            # UI-компоненты
+    │   ├── composables/           # Vue composables
+    │   ├── router/                # Vue Router
+    │   ├── stores/                # Pinia
+    │   └── views/                 # Компоненты страниц
+    ├── public/
+    ├── index.html
+    ├── package.json
+    └── vite.config.js
 ```
 
 ## API Guidelines
