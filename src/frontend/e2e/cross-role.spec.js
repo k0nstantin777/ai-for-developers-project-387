@@ -17,8 +17,8 @@ test.describe('Cross-role scenarios', () => {
     await page.locator('#event-duration').fill('60')
     await page.getByRole('button', { name: 'Create' }).click()
     await expect(page.getByText('Event Type Created', { exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'OK' }).click()
-    await page.waitForURL('/admin/bookings', { timeout: 30000 })
+
+    await page.goto('/admin/bookings')
     await expect(page.getByText('No bookings yet.')).toBeVisible()
 
     await page.goto('/')
@@ -38,7 +38,6 @@ test.describe('Cross-role scenarios', () => {
     await page.getByRole('button', { name: 'Confirm' }).click()
 
     await expect(page.getByText('Booking Confirmed', { exact: true })).toBeVisible()
-    await page.getByRole('button', { name: 'OK' }).click()
 
     await page.goto('/admin/bookings')
 

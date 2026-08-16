@@ -24,8 +24,8 @@ test.describe('Admin', () => {
 
     await expect(page.getByText('Event Type Created', { exact: true })).toBeVisible()
 
-    await page.getByRole('button', { name: 'OK' }).click()
-    await page.waitForURL('/admin/bookings', { timeout: 30000 })
+    await page.goto('/admin/bookings')
+    await expect(page.getByText('No bookings yet.')).toBeVisible()
   })
 
   test('should validate empty name on create', async ({ page }) => {

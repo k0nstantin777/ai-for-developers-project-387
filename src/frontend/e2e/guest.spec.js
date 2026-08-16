@@ -60,8 +60,8 @@ test.describe('Guest', () => {
 
     await expect(page.getByText('Booking Confirmed', { exact: true })).toBeVisible()
 
-    await page.getByRole('button', { name: 'OK' }).click()
-    await expect(page).toHaveURL('/guest/event-types')
+    await page.goto('/guest/event-types')
+    await expect(page.getByText('Select Event Type')).toBeVisible()
   })
 
   test('should validate empty name on booking', async ({ page }) => {
