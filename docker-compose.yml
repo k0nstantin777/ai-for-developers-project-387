@@ -67,6 +67,7 @@ services:
     volumes:
       - ./src/frontend/e2e:/app/e2e:ro
       - ./src/frontend/playwright.config.js:/app/playwright.config.js:ro
+      - ./src/frontend/playwright-report:/app/playwright-report
     environment:
       - PLAYWRIGHT_BASE_URL=http://frontend:5173
       - BACKEND_URL=http://backend:8000
