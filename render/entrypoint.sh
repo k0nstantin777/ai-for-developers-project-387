@@ -20,4 +20,9 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+chown -R www-data:www-data /app/bootstrap/cache
+
+PORT="${PORT:-80}"
+sed -i "s/__PORT__/${PORT}/g" /etc/nginx/http.d/default.conf
+
 exec "$@"
