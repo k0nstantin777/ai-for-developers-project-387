@@ -67,6 +67,8 @@
 
 ## Conventions
 
+- Коммиты следуют спецификации [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) (подробнее в [DEVELOPMENT.md](DEVELOPMENT.md#commit-message-format))
+
 ### PHP / Laravel
 - PSR-12
 - Тонкие контроллеры: только вызов сервиса и возврат ответа
