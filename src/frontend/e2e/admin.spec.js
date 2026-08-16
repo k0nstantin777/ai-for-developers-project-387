@@ -12,14 +12,13 @@ test.describe('Admin', () => {
   }
 
   test('should create event type successfully', async ({ page }) => {
-    await enterAdmin(page)
-    await page.getByRole('button', { name: 'Go' }).first().click()
+    await page.goto('/admin/event-types/create')
 
     await expect(page.getByText('Create Event Type')).toBeVisible()
 
-    await page.getByRole('textbox', { name: 'Name' }).fill('Code Review Session')
-    await page.getByRole('textbox', { name: 'Description' }).fill('Weekly code review meeting')
-    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('45')
+    await page.locator('#event-name').fill('Code Review Session')
+    await page.locator('#event-description').fill('Weekly code review meeting')
+    await page.locator('#event-duration').fill('45')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -33,8 +32,8 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByRole('textbox', { name: 'Description' }).fill('Some description')
-    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('30')
+    await page.locator('#event-description').fill('Some description')
+    await page.locator('#event-duration').fill('30')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -45,9 +44,9 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByRole('textbox', { name: 'Name' }).fill('Quick Chat')
-    await page.getByRole('textbox', { name: 'Description' }).fill('Quick sync')
-    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('3')
+    await page.locator('#event-name').fill('Quick Chat')
+    await page.locator('#event-description').fill('Quick sync')
+    await page.locator('#event-duration').fill('3')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -58,9 +57,9 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByRole('textbox', { name: 'Name' }).fill('Marathon')
-    await page.getByRole('textbox', { name: 'Description' }).fill('Too long')
-    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('500')
+    await page.locator('#event-name').fill('Marathon')
+    await page.locator('#event-description').fill('Too long')
+    await page.locator('#event-duration').fill('500')
 
     await page.getByRole('button', { name: 'Create' }).click()
 

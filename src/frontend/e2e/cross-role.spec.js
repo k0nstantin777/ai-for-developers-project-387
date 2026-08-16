@@ -12,9 +12,9 @@ test.describe('Cross-role scenarios', () => {
     await page.getByRole('button', { name: 'Enter' }).first().click()
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByRole('textbox', { name: 'Name' }).fill('Strategy Session')
-    await page.getByRole('textbox', { name: 'Description' }).fill('Long-term planning')
-    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('60')
+    await page.locator('#event-name').fill('Strategy Session')
+    await page.locator('#event-description').fill('Long-term planning')
+    await page.locator('#event-duration').fill('60')
     await page.getByRole('button', { name: 'Create' }).click()
     await expect(page.getByText('Event Type Created', { exact: true })).toBeVisible()
     await page.getByRole('button', { name: 'OK' }).click()
@@ -26,15 +26,15 @@ test.describe('Cross-role scenarios', () => {
     await expect(page.getByRole('link', { name: 'Book' })).toBeVisible({ timeout: 15000 })
     await page.getByRole('link', { name: 'Book' }).click()
 
-    await expect(page.getByText('Strategy Session')).toBeVisible({ timeout: 15000 })
+    await expect(page.getByRole('heading', { name: 'Strategy Session' })).toBeVisible({ timeout: 15000 })
     await expect(page.getByText(/\d{2}:\d{2}–\d{2}:\d{2}/).first()).toBeVisible({ timeout: 15000 })
 
     const firstChip = page.getByText(/\d{2}:\d{2}–\d{2}:\d{2}/).first()
     const slotText = await firstChip.textContent()
     await firstChip.click()
 
-    await page.getByRole('textbox', { name: 'Your name' }).fill('Bob Smith')
-    await page.getByRole('textbox', { name: 'Your email' }).fill('bob@example.com')
+    await page.locator('#booking-name').fill('Bob Smith')
+    await page.locator('#booking-email').fill('bob@example.com')
     await page.getByRole('button', { name: 'Confirm' }).click()
 
     await expect(page.getByText('Booking Confirmed', { exact: true })).toBeVisible()

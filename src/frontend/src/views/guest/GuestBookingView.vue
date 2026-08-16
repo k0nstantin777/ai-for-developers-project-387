@@ -54,17 +54,17 @@
             <v-card-text>
               <v-form v-model="formValid" @submit.prevent="handleBooking">
                 <v-text-field
+                  id="booking-name"
                   v-model="guestName"
                   label="Your name"
-                  aria-label="Your name"
                   :rules="[v => !!v || 'Name is required']"
                   variant="outlined"
                   class="mb-3"
                 />
                 <v-text-field
+                  id="booking-email"
                   v-model="guestEmail"
                   label="Your email"
-                  aria-label="Your email"
                   type="email"
                   :rules="[
                     v => !!v || 'Email is required',

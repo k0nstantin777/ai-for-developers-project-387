@@ -7,26 +7,26 @@
           <v-card-text>
             <v-form ref="formRef" v-model="valid" @submit.prevent="handleSubmit">
               <v-text-field
+                id="event-name"
                 v-model="name"
                 label="Name"
-                aria-label="Name"
                 :rules="[v => !!v || 'Name is required']"
                 variant="outlined"
                 class="mb-3"
               />
               <v-textarea
+                id="event-description"
                 v-model="description"
                 label="Description"
-                aria-label="Description"
                 :rules="[v => !!v || 'Description is required']"
                 variant="outlined"
                 rows="3"
                 class="mb-3"
               />
               <v-text-field
+                id="event-duration"
                 v-model.number="duration"
                 label="Duration (minutes)"
-                aria-label="Duration (minutes)"
                 type="number"
                 :rules="[
                   v => !!v || 'Duration is required',
