@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: call-me-in-time-api
+    name: call-me-in-time
     runtime: docker
     dockerfilePath: ./render/backend.Dockerfile
     plan: free
@@ -14,7 +14,7 @@ services:
         value: false
       - key: APP_URL
         fromService:
-          name: call-me-in-time-app
+          name: call-me-in-time
           type: web
           property: url
       - key: TRUSTED_PROXIES
@@ -37,21 +37,3 @@ services:
       name: sqlite-data
       mountPath: /app/database
       sizeGB: 1
-
-staticSites:
-  - name: call-me-in-time-app
-    rootDir: src/frontend
-    buildCommand: npm install && npm run build
-    publishDir: dist
-    plan: free
-    routes:
-      - type: rewrite
-        source: /api/*
-        destination:
-          fromService:
-            name: call-me-in-time-api
-            type: web
-            suffix: /api/*
-      - type: rewrite
-        source: /*
-        destination: /index.html

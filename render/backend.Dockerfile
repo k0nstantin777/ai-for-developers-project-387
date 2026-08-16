@@ -1,3 +1,10 @@
+FROM node:22-alpine AS frontend
+WORKDIR /src
+COPY src/frontend/package.json src/frontend/package-lock.json ./
+RUN npm ci
+COPY src/frontend .
+RUN npm run build
+
 FROM php:8.5-fpm-alpine
 
 RUN apk add --no-cache \
@@ -16,6 +23,8 @@ COPY render/supervisord.conf /etc/supervisord.conf
 COPY render/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+COPY --from=frontend /src/dist /app/public/spa
+
 COPY src/backend /app
 
 WORKDIR /app
@@ -27,7 +36,8 @@ RUN mkdir -p /app/storage/logs \
     && mkdir -p /app/storage/framework/cache \
     && mkdir -p /app/storage/framework/sessions \
     && chown -R www-data:www-data /app/storage \
-    && chown -R www-data:www-data /app/database
+    && chown -R www-data:www-data /app/database \
+    && chown -R www-data:www-data /app/public
 
 EXPOSE 80
 
