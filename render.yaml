@@ -1,0 +1,57 @@
+services:
+  - type: web
+    name: call-me-in-time-api
+    runtime: docker
+    dockerfilePath: ./render/backend.Dockerfile
+    plan: free
+    healthCheckPath: /api/event-types
+    envVars:
+      - key: APP_NAME
+        value: "Call me in time"
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        fromService:
+          name: call-me-in-time-app
+          type: static
+          property: url
+      - key: TRUSTED_PROXIES
+        value: "*"
+      - key: DB_CONNECTION
+        value: sqlite
+      - key: DB_DATABASE
+        value: /app/database/database.sqlite
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: APP_TIMEZONE
+        value: UTC
+      - key: SESSION_DRIVER
+        value: file
+      - key: CACHE_STORE
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+    disk:
+      name: sqlite-data
+      mountPath: /app/database
+      sizeGB: 1
+
+  - type: static
+    name: call-me-in-time-app
+    rootDir: src/frontend
+    buildCommand: npm install && npm run build
+    publishDirectory: dist
+    plan: free
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination:
+          fromService:
+            name: call-me-in-time-api
+            type: web
+            suffix: /api/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
