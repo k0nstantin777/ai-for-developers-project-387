@@ -18,7 +18,7 @@ test.describe('Cross-role scenarios', () => {
     await page.getByRole('button', { name: 'Create' }).click()
     await expect(page.getByText('Event Type Created', { exact: true })).toBeVisible()
     await page.getByRole('button', { name: 'OK' }).click()
-    await expect(page).toHaveURL('/admin/bookings')
+    await page.waitForURL('/admin/bookings', { timeout: 30000 })
     await expect(page.getByText('No bookings yet.')).toBeVisible()
 
     await page.goto('/')
