@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.1](https://github.com/k0nstantin777/ai-for-developers-project-386/compare/v1.0.0...v1.0.1) (2026-08-16)
+
+
+### Bug Fixes
+
+* Исправление тестов e2e ([cd8bce2](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/cd8bce2b4f49a232846fa54337d16f092e6a6f80))
+* Исправление тестов e2e [#2](https://github.com/k0nstantin777/ai-for-developers-project-386/issues/2) ([89163e5](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/89163e56e5176bfd308296e0629c348d84f958b2))
+* Исправление тестов e2e [#3](https://github.com/k0nstantin777/ai-for-developers-project-386/issues/3) ([523f768](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/523f768525730a540f3865daa1007f9eaa673afa))
+
 ## 1.0.0 (2026-08-16)
 
 
