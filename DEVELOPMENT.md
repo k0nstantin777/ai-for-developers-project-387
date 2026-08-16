@@ -21,6 +21,31 @@ docker compose exec backend php artisan migrate
 docker compose exec frontend npm install
 ```
 
+## Makefile
+
+Все основные команды вынесены в `make`-цели:
+
+| Команда | Описание |
+|---------|----------|
+| `make up` | Запустить все сервисы |
+| `make down` | Остановить все сервисы |
+| `make restart` | Перезапустить сервисы |
+| `make install` | Установить зависимости и выполнить миграции |
+| `make test` | Запустить все тесты бэкенда |
+| `make test-filter FILTER=MyTest` | Запустить конкретный тест |
+| `make lint` | Линтинг бэкенда и фронтенда |
+| `make lint-backend` | Линтинг бэкенда |
+| `make lint-frontend` | Линтинг фронтенда |
+| `make migrate` | Выполнить миграции |
+| `make migrate-fresh` | Пересоздать БД с нуля |
+| `make dev` | Запустить dev-сервер фронтенда (hot reload) |
+| `make build` | Продакшн-сборка фронтенда |
+| `make e2e` | Запустить E2E тесты (Playwright) |
+| `make prism` | Запустить Prism mock-сервер |
+| `make tinker` | Laravel Tinker (REPL) |
+| `make shell` | Bash-сессия в контейнере бэкенда |
+| `make logs` | Просмотр логов всех сервисов |
+
 ## Development Workflow
 
 ### Бэкенд (Laravel)
