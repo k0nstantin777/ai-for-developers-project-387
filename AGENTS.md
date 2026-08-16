@@ -58,9 +58,11 @@
 │       ├── package.json
 │       └── vite.config.js
 ├── specs/                   # TypeSpec и OpenAPI-спецификации
+├── docs/                    # Документация
 ├── AGENTS.md
-├── ARCHITECTURE.md
-└── DEVELOPMENT.md
+├── ARCHITECTURE.md          # Принятые архитектурные подходы
+├── DEVELOPMENT.md           # Описание для локальной разработки проекта
+└── README.md                # Описание проекта               
 ```
 
 ## Conventions
