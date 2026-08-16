@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-v-in-tag": true,
+  "bootstrap-sha": "main",
+  "packages": {
+    ".": {
+      "package-name": "call-me-in-time",
+      "changelog-path": "CHANGELOG.md",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "package.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "src/frontend/package.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}
