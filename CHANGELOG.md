@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/k0nstantin777/ai-for-developers-project-386/compare/v1.0.1...v1.1.0) (2026-08-16)
+
+
+### Features
+
+* создание конфигурация для render ([d8825c2](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/d8825c2310e18c858def5fed5be4a5dd74c42d0e))
+
+
+### Bug Fixes
+
+* добавлен запуск по переменной PORT в render. ([0ad7a5c](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/0ad7a5cb88411c54c91b2057ce21bc642175fcc6))
+* исправление конфигурации render.yaml ([5407c0d](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/5407c0d436d744583be99e197f2d690f326d3e92))
+* исправление конфигурации render.yaml [#3](https://github.com/k0nstantin777/ai-for-developers-project-386/issues/3) ([9e7dabb](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/9e7dabb3b8f5fad3d469e9ec888f802dbfb10fd3))
+* исправление конфигурации render.yaml, объединение в один сервис. ([e7a3714](https://github.com/k0nstantin777/ai-for-developers-project-386/commit/e7a37143c68839ec8e4e328fedeb4435cced5824))
+
 ## [1.0.1](https://github.com/k0nstantin777/ai-for-developers-project-386/compare/v1.0.0...v1.0.1) (2026-08-16)
 
 
