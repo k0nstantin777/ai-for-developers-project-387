@@ -2,7 +2,7 @@ services:
   - type: web
     name: call-me-in-time
     runtime: docker
-    dockerfilePath: ./render/backend.Dockerfile
+    dockerfilePath: ./Dockerfile
     plan: free
     healthCheckPath: /api/event-types
     envVars:
