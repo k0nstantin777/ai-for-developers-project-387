@@ -10,3 +10,7 @@ Route::apiResource('event-types', EventTypeController::class)->only(['index', 's
 Route::get('event-types/{id}/slots', [EventTypeController::class, 'slots']);
 
 Route::apiResource('bookings', BookingController::class)->only(['index', 'store', 'show']);
+
+if (app()->environment('local')) {
+    require __DIR__.'/testing.php';
+}
