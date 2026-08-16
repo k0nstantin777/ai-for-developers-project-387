@@ -56,6 +56,7 @@
                 <v-text-field
                   v-model="guestName"
                   label="Your name"
+                  aria-label="Your name"
                   :rules="[v => !!v || 'Name is required']"
                   variant="outlined"
                   class="mb-3"
@@ -63,6 +64,7 @@
                 <v-text-field
                   v-model="guestEmail"
                   label="Your email"
+                  aria-label="Your email"
                   type="email"
                   :rules="[
                     v => !!v || 'Email is required',

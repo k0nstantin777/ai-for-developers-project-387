@@ -12,9 +12,9 @@ test.describe('Cross-role scenarios', () => {
     await page.getByRole('button', { name: 'Enter' }).first().click()
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByLabel('Name').fill('Strategy Session')
-    await page.getByLabel('Description').fill('Long-term planning')
-    await page.getByLabel('Duration (minutes)').fill('60')
+    await page.getByRole('textbox', { name: 'Name' }).fill('Strategy Session')
+    await page.getByRole('textbox', { name: 'Description' }).fill('Long-term planning')
+    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('60')
     await page.getByRole('button', { name: 'Create' }).click()
     await expect(page.getByText('Event Type Created', { exact: true })).toBeVisible()
     await page.getByRole('button', { name: 'OK' }).click()
@@ -33,8 +33,8 @@ test.describe('Cross-role scenarios', () => {
     const slotText = await firstChip.textContent()
     await firstChip.click()
 
-    await page.getByLabel('Your name').fill('Bob Smith')
-    await page.getByLabel('Your email').fill('bob@example.com')
+    await page.getByRole('textbox', { name: 'Your name' }).fill('Bob Smith')
+    await page.getByRole('textbox', { name: 'Your email' }).fill('bob@example.com')
     await page.getByRole('button', { name: 'Confirm' }).click()
 
     await expect(page.getByText('Booking Confirmed', { exact: true })).toBeVisible()

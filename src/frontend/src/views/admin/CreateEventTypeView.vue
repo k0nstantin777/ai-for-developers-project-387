@@ -9,6 +9,7 @@
               <v-text-field
                 v-model="name"
                 label="Name"
+                aria-label="Name"
                 :rules="[v => !!v || 'Name is required']"
                 variant="outlined"
                 class="mb-3"
@@ -16,6 +17,7 @@
               <v-textarea
                 v-model="description"
                 label="Description"
+                aria-label="Description"
                 :rules="[v => !!v || 'Description is required']"
                 variant="outlined"
                 rows="3"
@@ -24,6 +26,7 @@
               <v-text-field
                 v-model.number="duration"
                 label="Duration (minutes)"
+                aria-label="Duration (minutes)"
                 type="number"
                 :rules="[
                   v => !!v || 'Duration is required',

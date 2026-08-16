@@ -17,9 +17,9 @@ test.describe('Admin', () => {
 
     await expect(page.getByText('Create Event Type')).toBeVisible()
 
-    await page.getByLabel('Name').fill('Code Review Session')
-    await page.getByLabel('Description').fill('Weekly code review meeting')
-    await page.getByLabel('Duration (minutes)').fill('45')
+    await page.getByRole('textbox', { name: 'Name' }).fill('Code Review Session')
+    await page.getByRole('textbox', { name: 'Description' }).fill('Weekly code review meeting')
+    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('45')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -33,8 +33,8 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByLabel('Description').fill('Some description')
-    await page.getByLabel('Duration (minutes)').fill('30')
+    await page.getByRole('textbox', { name: 'Description' }).fill('Some description')
+    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('30')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -45,9 +45,9 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByLabel('Name').fill('Quick Chat')
-    await page.getByLabel('Description').fill('Quick sync')
-    await page.getByLabel('Duration (minutes)').fill('3')
+    await page.getByRole('textbox', { name: 'Name' }).fill('Quick Chat')
+    await page.getByRole('textbox', { name: 'Description' }).fill('Quick sync')
+    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('3')
 
     await page.getByRole('button', { name: 'Create' }).click()
 
@@ -58,9 +58,9 @@ test.describe('Admin', () => {
     await enterAdmin(page)
     await page.getByRole('button', { name: 'Go' }).first().click()
 
-    await page.getByLabel('Name').fill('Marathon')
-    await page.getByLabel('Description').fill('Too long')
-    await page.getByLabel('Duration (minutes)').fill('500')
+    await page.getByRole('textbox', { name: 'Name' }).fill('Marathon')
+    await page.getByRole('textbox', { name: 'Description' }).fill('Too long')
+    await page.getByRole('spinbutton', { name: 'Duration (minutes)' }).fill('500')
 
     await page.getByRole('button', { name: 'Create' }).click()
 

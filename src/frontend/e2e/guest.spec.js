@@ -53,8 +53,8 @@ test.describe('Guest', () => {
 
     await expect(page.getByText('Confirm Booking')).toBeVisible()
 
-    await page.getByLabel('Your name').fill('John Doe')
-    await page.getByLabel('Your email').fill('john@example.com')
+    await page.getByRole('textbox', { name: 'Your name' }).fill('John Doe')
+    await page.getByRole('textbox', { name: 'Your email' }).fill('john@example.com')
 
     await page.getByRole('button', { name: 'Confirm' }).click()
 
@@ -72,7 +72,7 @@ test.describe('Guest', () => {
 
     await expect(page.getByText('Confirm Booking')).toBeVisible()
 
-    await page.getByLabel('Your email').fill('john@example.com')
+    await page.getByRole('textbox', { name: 'Your email' }).fill('john@example.com')
     await page.getByRole('button', { name: 'Confirm' }).click()
 
     await expect(page.getByText('Name is required')).toBeVisible()
@@ -86,8 +86,8 @@ test.describe('Guest', () => {
 
     await expect(page.getByText('Confirm Booking')).toBeVisible()
 
-    await page.getByLabel('Your name').fill('John Doe')
-    await page.getByLabel('Your email').fill('not-an-email')
+    await page.getByRole('textbox', { name: 'Your name' }).fill('John Doe')
+    await page.getByRole('textbox', { name: 'Your email' }).fill('not-an-email')
     await page.getByRole('button', { name: 'Confirm' }).click()
 
     await expect(page.getByText('Invalid email')).toBeVisible()
