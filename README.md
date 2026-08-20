@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/k0nstantin777/ai-for-developers-project-387/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/k0nstantin777/ai-for-developers-project-387/actions)
+
 ## Проект
 
 **Call me in time** — упрощенный аналог Cal.com. Календарь звонков с выбором даты и времени.
