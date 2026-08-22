@@ -32,6 +32,8 @@ jobs:
         run: |
           git config --global credential.helper store
           echo "https://x-access-token:${{ secrets.OPENCODE_REPO_TOKEN }}@github.com" > ~/.git-credentials
+      - name: Sync with remote before push
+        run: git pull --rebase origin ${{ github.head_ref }}
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
         env:
@@ -40,3 +42,5 @@ jobs:
         with:
           model: opencode/deepseek-v4-pro
           use_github_token: true
+          prompt: |
+            Then create comment follow the Commit Message Format in DEVELOPMENTS.md 
