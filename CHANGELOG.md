@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.0 (2026-08-22)
+
+
+### Features
+
+* Добавлен ci/cd, запуск тестов в Github Actions. ([dde3348](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/dde33487c5d42c253c28f253ae7bd1330920c7b7))
+* Добавлен Makefile ([56cbe1f](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/56cbe1f6dfc78285992551de023a8020b471949d))
+* добавление please release в CI. ([abf9cf5](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/abf9cf52ded5ad9dbcdd8ab563648aad8a0be634))
+* Добавлены e2e тесты. ([46dbfb3](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/46dbfb3a816979859d0cc28a155936038349570e))
+* Добавлены правила о формате коммитов по Conventional Commits ([cb0a6a5](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/cb0a6a5a71322ea8426be69343c40c982b860ee7))
+* создание конфигурация для render ([2c97df3](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/2c97df3ef18b9fb6d834d562ab9fe784c045ecaa))
+
+
+### Bug Fixes
+
+* opencode model. ([2da45b4](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/2da45b4cba8f0a0a70f1f107884275343aca40a5))
+* opencode model[#10](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/10) ([79e8eb9](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/79e8eb9d1c516b4b4dd65e895299a233fa619071))
+* opencode model[#11](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/11) ([1dbcd2b](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/1dbcd2bc79e7dda6617f9ec0624b9f78c97c94fe))
+* opencode model[#12](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/12) ([bae4827](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/bae482717b33bde9f23c86fe1d29c77f58e5dcc3))
+* opencode model[#2](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/2) ([d3b4bfc](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/d3b4bfcdaebcb0eb82348432d671ad07a9f1e033))
+* opencode model[#3](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/3) ([732a9d4](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/732a9d4375282898ba5f98ad8da83cb3d7c6902f))
+* opencode model[#4](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/4) ([2ebe346](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/2ebe346a15142c0965243ee88acfe562d7c649a1))
+* opencode model[#5](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/5) ([6138a4b](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/6138a4b53577852112591b11b6535d31fef266fc))
+* opencode model[#6](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/6) ([7a60dce](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/7a60dce3c50be6713e2ba72de97bc2f74ff4891c))
+* opencode model[#7](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/7) ([b219d2d](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/b219d2da3d4473b45a72c9622f8e0f8ff8d8f6e8))
+* opencode model[#8](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/8) ([e9418e8](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/e9418e85c03206bc5674dae7ba78878ce407d838))
+* opencode model[#9](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/9) ([23e04e0](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/23e04e0e605defae2bcf6f772d1a9000ed69414c))
+* добавлен запуск по переменной PORT в render. ([0aa30ef](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/0aa30efe26dde615ee1eaab0101ab7c66e791eed))
+* Исправлен тест e2e ([332ec16](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/332ec16d330c331782ab1b738ef6af022864d895))
+* исправление конфигурации render.yaml ([1442413](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/1442413ec6ab0280c38569f9fd4de45b58af7537))
+* исправление конфигурации render.yaml [#3](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/3) ([e321cb7](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/e321cb7b9ad89139e0ddbaaabdd9d5eefd0c0be1))
+* исправление конфигурации render.yaml, объединение в один сервис. ([58a99fa](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/58a99fa67339454ad9340b41adcf376b8878a343))
+* Исправление тестов e2e ([a6d268d](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/a6d268d81455b9ba2838d9aaba1fb1b17258a62c))
+* Исправление тестов e2e [#2](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/2) ([33860c2](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/33860c2901785f82419adb9bf5df42d9e5c87651))
+* Исправление тестов e2e [#3](https://github.com/k0nstantin777/ai-for-developers-project-387/issues/3) ([d3a31d7](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/d3a31d7e3b6f695d65c1b8a28c91ca74fce69b43))
+* Перенос Dockerfile для деплоя в корень, для прохождения автопроверки. ([8d7b023](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/8d7b02348d5671f3465e993e4976a28013a24e4a))
+
 ## [1.1.0](https://github.com/k0nstantin777/ai-for-developers-project-386/compare/v1.0.1...v1.1.0) (2026-08-16)
 
 
