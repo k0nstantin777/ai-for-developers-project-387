@@ -28,6 +28,10 @@ jobs:
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+      - name: Configure git credentials
+        run: |
+          git config --global credential.helper store
+          echo "https://x-access-token:${{ secrets.OPENCODE_REPO_TOKEN }}@github.com" > ~/.git-credentials
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
         env:
