@@ -17,6 +17,8 @@ class SlotService
 
     private const DAYS_AHEAD = 14;
 
+    private const WEEKEND_DAYS = [6, 7];
+
     public function __construct(
         private readonly BookingRepository $bookingRepository,
     ) {}
@@ -46,7 +48,7 @@ class SlotService
         for ($day = 0; $day < self::DAYS_AHEAD; $day++) {
             $date = $today->modify('+'.$day.' days');
 
-            if (in_array((int) $date->format('N'), [6, 7])) {
+            if (in_array((int) $date->format('N'), self::WEEKEND_DAYS)) {
                 continue;
             }
 

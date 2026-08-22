@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 
+const WEEKEND_DAYS = [0, 6]
+
 let _id = 0
 
 function makeItem(type, payload = {}) {
@@ -70,7 +72,7 @@ export function getSlots() {
 
   for (let d = 0; d < 14; d++) {
     const date = now.add(d, 'day')
-    if ([0, 6].includes(date.day())) {
+    if (WEEKEND_DAYS.includes(date.day())) {
       continue
     }
     for (let h = 9; h < 18; h++) {

@@ -70,6 +70,8 @@ class SlotServiceTest extends TestCase
 
         $slots = $this->service->getSlots($eventType);
 
+        $this->assertNotEmpty($slots);
+
         foreach ($slots as $slot) {
             $dayOfWeek = (int) Carbon::parse($slot['startTime'])->format('N');
             $this->assertNotContains($dayOfWeek, [6, 7], "Slot falls on a weekend: {$slot['startTime']}");
