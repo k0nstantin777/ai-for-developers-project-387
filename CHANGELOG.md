@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/k0nstantin777/ai-for-developers-project-387/compare/v1.0.0...v1.1.0) (2026-08-22)
+
+
+### Features
+
+* добавил шаг настройки автора github коммитов в workflow opencode. ([d8af6cd](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/d8af6cddeeaa193c84cd916b60d8add1370c8a7a))
+
+
+### Bug Fixes
+
+* opencode workflows ([91bb4b9](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/91bb4b98d214ca85be90f1864955697eaf5f37e1))
+* добавил opencode Configure git credentials step ([a6e7228](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/a6e72281aacea656ec6eb826e42186353f3d7311))
+* исправил ci.yml ожидание запуска frontend контейнера ([7a994fd](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/7a994fd867efdd7a7c9dbdb2d5828c5936166bfa))
+* исправил entrypoint.sh для контейнера frontend. ([1d03721](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/1d03721309a4300e863c7d5e448a6ce082550fc3))
+
 ## 1.0.0 (2026-08-22)
 
 
