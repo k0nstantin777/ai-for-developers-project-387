@@ -45,6 +45,11 @@ class SlotService
 
         for ($day = 0; $day < self::DAYS_AHEAD; $day++) {
             $date = $today->modify('+'.$day.' days');
+
+            if (in_array((int) $date->format('N'), [6, 7])) {
+                continue;
+            }
+
             $slotHour = self::WORKING_HOUR_START;
 
             while ($slotHour * 60 + $duration <= self::WORKING_HOUR_END * 60) {
