@@ -4,3 +4,7 @@ dist/
 
 # Dependency directories
 node_modules/
+
+# Lighthouse CI
+.lighthouseci/
+lighthouse-report.html
