@@ -64,6 +64,20 @@ class SlotServiceTest extends TestCase
         }
     }
 
+    public function test_slots_exclude_weekends(): void
+    {
+        $eventType = EventType::factory()->create(['duration' => 60]);
+
+        $slots = $this->service->getSlots($eventType);
+
+        $this->assertNotEmpty($slots);
+
+        foreach ($slots as $slot) {
+            $dayOfWeek = (int) Carbon::parse($slot['startTime'])->format('N');
+            $this->assertNotContains($dayOfWeek, [6, 7], "Slot falls on a weekend: {$slot['startTime']}");
+        }
+    }
+
     public function test_excludes_booked_slots(): void
     {
         $eventType = EventType::factory()->create(['duration' => 30]);
