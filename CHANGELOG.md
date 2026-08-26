@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/k0nstantin777/ai-for-developers-project-387/compare/v1.1.0...v1.2.0) (2026-08-26)
+
+
+### Features
+
+* добавлен lighthouse cli и workflow в github actions. ([ae89939](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/ae8993945be336cdbfb63e768320be3d6bfc9f5c))
+* добавлены github workflows запуска задачи по расписанию и в ручном режиме. ([9f6ae71](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/9f6ae71588dc83ad1680f677ac01d61ad442689b))
+
+
+### Bug Fixes
+
+* пофиксил запуск lighthouse cli в workflow github actions. ([19c19a6](https://github.com/k0nstantin777/ai-for-developers-project-387/commit/19c19a60a43920353b879d95dc4bf9947e2a6dfd))
+
 ## [1.1.0](https://github.com/k0nstantin777/ai-for-developers-project-387/compare/v1.0.0...v1.1.0) (2026-08-22)
 
 
