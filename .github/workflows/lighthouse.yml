@@ -48,7 +48,7 @@ jobs:
 
       - name: Run Lighthouse CI
         run: |
-          npx @lhci/cli autorun --config=lighthouserc.js
+          npx @lhci/cli autorun --config=lighthouserc.cjs
         continue-on-error: true
 
       - name: Upload Lighthouse report
